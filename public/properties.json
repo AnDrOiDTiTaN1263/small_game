@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Lakeside Villa",
+    "type": "residential",
+    "full_price": 750000,
+    "down_payment": 150000,
+    "auction_fee": 12000,
+    "interest_rate": 3.5,
+    "income": 3750
+  },
+  {
+    "name": "Urban Loft",
+    "type": "residential",
+    "full_price": 520000,
+    "down_payment": 104000,
+    "auction_fee": 9500,
+    "interest_rate": 4.1,
+    "income": 3160
+  },
+  {
+    "name": "Mountain Cabin",
+    "type": "residential",
+    "full_price": 310000,
+    "down_payment": 62000,
+    "auction_fee": 7200,
+    "interest_rate": 3.8,
+    "income": 2410
+  },
+  {
+    "name": "Coastal Retreat",
+    "type": "residential",
+    "full_price": 890000,
+    "down_payment": 178000,
+    "auction_fee": 13500,
+    "interest_rate": 3.2,
+    "income": 4250
+  },
+  {
+    "name": "Suburban Estate",
+    "type": "residential",
+    "full_price": 610000,
+    "down_payment": 122000,
+    "auction_fee": 9800,
+    "interest_rate": 4.0,
+    "income": 3500
+  },
+  {
+    "name": "Greenfield Market",
+    "type": "market",
+    "full_price": 950000,
+    "down_payment": 190000,
+    "auction_fee": 15000,
+    "interest_rate": 4.3,
+    "income": 5200
+  },
+  {
+    "name": "Sunset Mall",
+    "type": "mall",
+    "full_price": 2450000,
+    "down_payment": 490000,
+    "auction_fee": 30000,
+    "interest_rate": 4.0,
+    "income": 15000
+  },
+  {
+    "name": "Downtown Parking Hub",
+    "type": "parking lot",
+    "full_price": 480000,
+    "down_payment": 96000,
+    "auction_fee": 7000,
+    "interest_rate": 3.9,
+    "income": 2100
+  },
+  {
+    "name": "Harborview Apartments",
+    "type": "apartment",
+    "full_price": 670000,
+    "down_payment": 134000,
+    "auction_fee": 10200,
+    "interest_rate": 3.7,
+    "income": 3600
+  },
+  {
+    "name": "Orchard Plaza",
+    "type": "market",
+    "full_price": 830000,
+    "down_payment": 166000,
+    "auction_fee": 11000,
+    "interest_rate": 3.6,
+    "income": 4700
+  },
+  {
+    "name": "Metro Center Garage",
+    "type": "parking lot",
+    "full_price": 560000,
+    "down_payment": 112000,
+    "auction_fee": 8600,
+    "interest_rate": 4.1,
+    "income": 2350
+  },
+  {
+    "name": "Crescent Heights",
+    "type": "apartment",
+    "full_price": 720000,
+    "down_payment": 144000,
+    "auction_fee": 9300,
+    "interest_rate": 3.9,
+    "income": 3850
+  },
+  {
+    "name": "Evergreen Galleria",
+    "type": "mall",
+    "full_price": 3100000,
+    "down_payment": 620000,
+    "auction_fee": 45000,
+    "interest_rate": 4.2,
+    "income": 17500
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Gold",
+    "price_history": [1950, 1980, 2025, 2000, 2040, 2075],
+    "news": [
+      { "headline": "Investors Flock to Gold Amid Global Economic Uncertainty", "sentiment": "positive" },
+      { "headline": "Gold Prices Climb as Dollar Weakens", "sentiment": "positive" },
+      { "headline": "Strong Jobs Report Dampens Gold Demand", "sentiment": "negative" },
+      { "headline": "Central Banks Increase Gold Reserves Significantly", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Silver",
+    "price_history": [24.1, 24.7, 25.3, 24.8, 26.0, 26.5],
+    "news": [
+      { "headline": "Silver Sees Boost from Industrial Demand Surge", "sentiment": "positive" },
+      { "headline": "Rising Interest Rates Pressuring Silver Prices", "sentiment": "negative" },
+      { "headline": "Solar Industry Expansion Fuels Silver Bull Market", "sentiment": "positive" },
+      { "headline": "Silver Market Volatility Raises Investor Concerns", "sentiment": "negative" }
+    ]
+  },
+  {
+    "name": "Crude Oil",
+    "price_history": [75.3, 77.2, 79.8, 76.5, 80.1, 82.4],
+    "news": [
+      { "headline": "OPEC+ Production Cuts Drive Oil Prices Higher", "sentiment": "positive" },
+      { "headline": "Oil Prices Fall Amid Fears of Global Recession", "sentiment": "negative" },
+      { "headline": "Geopolitical Tensions in the Middle East Support Oil Rally", "sentiment": "positive" },
+      { "headline": "U.S. Crude Inventories Unexpectedly Rise", "sentiment": "negative" }
+    ]
+  },
+  {
+    "name": "Natural Gas",
+    "price_history": [2.5, 2.7, 3.0, 2.8, 3.1, 3.3],
+    "news": [
+      { "headline": "Colder Winter Forecast Boosts Natural Gas Demand", "sentiment": "positive" },
+      { "headline": "European LNG Imports Hit Record Levels", "sentiment": "positive" },
+      { "headline": "Natural Gas Prices Dip on Milder Weather Expectations", "sentiment": "negative" },
+      { "headline": "Supply Chain Constraints Lift Natural Gas Futures", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Copper",
+    "price_history": [4.10, 4.25, 4.35, 4.20, 4.40, 4.50],
+    "news": [
+      { "headline": "Copper Prices Rise on Green Energy Investment Boom", "sentiment": "positive" },
+      { "headline": "China’s Slowing Manufacturing Weighs on Copper Market", "sentiment": "negative" },
+      { "headline": "Mining Disruptions in Chile Tighten Global Copper Supply", "sentiment": "positive" },
+      { "headline": "Electric Vehicle Demand Sparks Copper Rally", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Platinum",
+    "price_history": [920, 940, 960, 950, 980, 1000],
+    "news": [
+      { "headline": "Platinum Gains as Auto Industry Recovers", "sentiment": "positive" },
+      { "headline": "Palladium Substitution Slows Platinum Demand Growth", "sentiment": "negative" },
+      { "headline": "South African Mine Strike Sends Platinum Prices Higher", "sentiment": "positive" },
+      { "headline": "Investors Reevaluate Platinum’s Role as Safe Haven", "sentiment": "neutral" }
+    ]
+  }
+]
+    

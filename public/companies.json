@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Nebula Dynamics",
+    "stock_price_history": [120.5, 122.3, 125.0, 123.7, 128.1, 130.2],
+    "news": [
+      { "headline": "Nebula Dynamics Announces Breakthrough in Quantum Networking", "sentiment": "positive" },
+      { "headline": "Investors React Positively to Nebula’s Q2 Earnings Beat", "sentiment": "positive" },
+      { "headline": "Concerns Raised Over Nebula’s Supply Chain Stability", "sentiment": "negative" }
+    ]
+  },
+  {
+    "name": "Veltrix Motors",
+    "stock_price_history": [87.4, 88.1, 89.9, 90.5, 91.3, 89.0],
+    "news": [
+      { "headline": "Veltrix Motors Unveils Affordable Electric SUV", "sentiment": "positive" },
+      { "headline": "Production Delays Hit Veltrix’s European Plant", "sentiment": "negative" },
+      { "headline": "Analysts Say Veltrix Well-Positioned for Long-Term Growth", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Aureon Labs",
+    "stock_price_history": [43.2, 44.5, 46.0, 45.3, 47.1, 48.4],
+    "news": [
+      { "headline": "Aureon Labs Receives FDA Approval for New Cancer Treatment", "sentiment": "positive" },
+      { "headline": "Insiders Sell Shares After Price Surge", "sentiment": "negative" },
+      { "headline": "Aureon Expands R&D with New AI Drug Discovery Team", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Polaris Grid",
+    "stock_price_history": [31.7, 30.9, 32.4, 34.0, 33.6, 32.8],
+    "news": [
+      { "headline": "Energy Grid Upgrade in Texas Secured by Polaris", "sentiment": "positive" },
+      { "headline": "Quarterly Earnings Fall Short of Analyst Expectations", "sentiment": "negative" },
+      { "headline": "Polaris Invests in Wind and Solar Initiatives", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Zenitech Solutions",
+    "stock_price_history": [62.1, 61.3, 63.7, 65.2, 66.0, 67.8],
+    "news": [
+      { "headline": "Zenitech Expands Enterprise Software Suite with AI Features", "sentiment": "positive" },
+      { "headline": "Privacy Concerns Emerge Over Zenitech Cloud Sync", "sentiment": "negative" },
+      { "headline": "Zenitech Gains Ground in Southeast Asian Market", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Crystallis Biotech",
+    "stock_price_history": [95.8, 97.3, 99.5, 101.0, 100.2, 98.7],
+    "news": [
+      { "headline": "Crystallis Begins Human Trials for Promising Alzheimer’s Drug", "sentiment": "positive" },
+      { "headline": "Patent Dispute Causes Stock to Dip Temporarily", "sentiment": "negative" },
+      { "headline": "Major Investment from Healthcare VC Bolsters R&D", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Ironhill Logistics",
+    "stock_price_history": [54.0, 53.5, 55.2, 56.1, 57.3, 56.0],
+    "news": [
+      { "headline": "Ironhill Secures Government Contract for Military Supply Chain", "sentiment": "positive" },
+      { "headline": "Driver Strike Disrupts Distribution Network", "sentiment": "negative" },
+      { "headline": "New Automation System Expected to Cut Costs by 15%", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Halcyon Entertainment",
+    "stock_price_history": [29.4, 28.9, 30.2, 31.0, 30.7, 32.1],
+    "news": [
+      { "headline": "Streaming Service Halcyon+ Hits 10 Million Subscribers", "sentiment": "positive" },
+      { "headline": "Mixed Reviews for Halcyon's Latest Film Release", "sentiment": "neutral" },
+      { "headline": "Partnership with Gaming Giant Sparks Investor Optimism", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Trident AeroSpace",
+    "stock_price_history": [210.5, 212.3, 215.8, 213.4, 218.0, 220.1],
+    "news": [
+      { "headline": "Trident Launches Reusable Rocket Prototype", "sentiment": "positive" },
+      { "headline": "Supply Delays Affect Jet Engine Division", "sentiment": "negative" },
+      { "headline": "Defense Contracts Provide Revenue Stability", "sentiment": "positive" }
+    ]
+  },
+  {
+    "name": "Ecliptica Fintech",
+    "stock_price_history": [70.8, 72.4, 74.6, 75.0, 73.9, 76.3],
+    "news": [
+      { "headline": "Ecliptica Launches AI-Powered Investment Tool", "sentiment": "positive" },
+      { "headline": "Regulators Question Ecliptica’s Crypto Asset Practices", "sentiment": "negative" },
+      { "headline": "Strong User Growth Bolsters Market Confidence", "sentiment": "positive" }
+    ]
+  }
+]
