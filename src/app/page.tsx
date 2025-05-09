@@ -1,9 +1,7 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div>
-        
+    <div className="grid grid-flow-row w-full h-full">
+        New investing game
 
     </div>
   );
