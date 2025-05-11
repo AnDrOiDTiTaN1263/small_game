@@ -42,7 +42,7 @@ export default function FixedDeposit({fixedDeposits, balance, setBalance, setFix
                         <div className='grid w-full h-full justify-center items-center text-xl'>No Deposits to show</div>
                     :
                         <div className='grid grid-flow-row-dense gap-2 w-full h-full p-2'>
-                            {fixedDeposits.map((x,i)=><DepositComponent key={i} deposit={x} />)}
+                            {fixedDeposits.map((x,i)=><DepositComponent key={i} id={i} deposit={x} setFixedDeposits={setFixedDeposits} setBalance={setBalance} />)}
                         </div>
                     }
                     
@@ -51,7 +51,8 @@ export default function FixedDeposit({fixedDeposits, balance, setBalance, setFix
             <div className='grid col-span-5 bg-zinc-200 rounded-b-xl p-2 rounded-lg'>
                 <div className='grid justify-center items-center row-span-1 text-2xl font-semibold'>New Deposit</div>
                 <div className='grid row-span-10'>
-                    <div>Add a deposit of any amount to get: {(FDINTERESTRATE*100).toFixed(2)}% in interest payments EVERY MONTH!</div>
+                    <div>Add a deposit of any amount to get: {(FDINTERESTRATE*100).toFixed(2)}% in interest payments every month</div>
+                    <div>You currently have: ${balance.toFixed(2)} you can use to deposit</div>
                     <div className='flex w-full gap-2'>
                         <label className='text-nowrap w-fit px-2'>Deposit Amount:</label>
                         <input onChange={handleChange} type='number' name='depositAmount'  className='grid row-span-1 h-8 w-full border-2 outline-none rounded-lg px-2' />

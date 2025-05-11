@@ -1,13 +1,13 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { calculateFixedDepositInterestPayment, calculateMonthlyRepayment, updateFixedDeposits, updateRecurringDeposits } from "./utils";
-import FixedDeposit from "./components/FixedDeposit";
+import FixedDeposit from "./deposits/FixedDeposit";
 import { Deposit, Property } from "./constants";
 import Banner from "./components/Banner";
 
 
 export default function Home() {
-  const [balance, setBalance] = useState(0);
+  const [balance, setBalance] = useState( 0);
   const income = 1000;
   const [month, setMonth] = useState(1);
   const [properties,setProperties] = useState<Array<Property>>([]);
@@ -16,6 +16,15 @@ export default function Home() {
   const [liabilities, setLiabilities] = useState([]);
   const [fixedDeposits, setFixedDeposits] = useState<Array<Deposit>>([]);
   const [recurringDeposits, setRecurringDeposits] = useState<Array<Deposit>>([]);
+  
+  useEffect(()=>{
+    setBalance(JSON.parse(localStorage?.getItem("balance")||'0'))
+    setMonth(JSON.parse(localStorage?.getItem("month") || "1"));
+    setFixedDeposits(JSON.parse(localStorage?.getItem("fds") || "[]"))
+  },[])
+
+
+
   const [monthlyCostsPaid, setMonthlyCostsPaid] = useState(false);
   const[monthlyIncomeClaimed, setMonthlyIncomeClaimed] = useState(false);
   const [showFDModal, setShowFDModal] = useState(false);
@@ -33,10 +42,11 @@ export default function Home() {
       // do it
       setFixedDeposits(updateFixedDeposits(fixedDeposits));
       setRecurringDeposits(updateRecurringDeposits(recurringDeposits, month));
+      localStorage.setItem('month', JSON.stringify(month+1));
       setMonth(month+1);
-      if(cashFlow[0] >0){
-      setMonthlyCostsPaid(false);}
+      setMonthlyCostsPaid(false)
       setMonthlyIncomeClaimed(false);
+      localStorage.setItem('balance', JSON.stringify(balance));
     }
   }
   const handleExpenses = ()=>{
@@ -46,6 +56,19 @@ export default function Home() {
     }
     
   }
+  const handleBoth = ()=>{
+    // if we can barely scrape through then do it
+    if (balance + cashFlow[1] - cashFlow[0] >= 0){
+      setBalance(parseFloat((balance + cashFlow[1] - cashFlow[0]).toFixed(2)))
+      setMonthlyCostsPaid(true);
+      setMonthlyIncomeClaimed(true);
+    }
+  }
+
+  const restart = ()=>{
+    localStorage.clear();
+    window.location.reload()
+  }
   const [bannerDetails, setBannerDetails] = useState({isGood:false, text:""})
   const [showBanner, setShowBanner]= useState(false);
   return (
@@ -53,8 +76,8 @@ export default function Home() {
         
         {showBanner && <Banner bannerDetails={bannerDetails}  setShowBanner={setShowBanner}/>}
         <div className="grid grid-flow-col row-span-1 w-full col-span-full justify-between items-center px-5 bg-slate-300">
-        <button className="border-2 h-10 px-2 rounded-xl hover:bg-black hover:text-white hover:border-0 ">Restart</button>
-        <div>$AU {balance.toFixed(2)}</div>
+        <button className="border-2 h-10 px-2 rounded-xl hover:bg-black hover:text-white hover:border-0 " onClick={restart}>Restart</button>
+        <div className="flex text-[2rem]">$AU {balance.toFixed(2)}</div>
         <div className="w-30" />
         </div>
           <div className="grid grid-flow-row row-span-11 w-full h-ful gap-2 pb-2 px-2 grid-rows-10 grid-cols-1 lg:grid-rows-2 lg:grid-cols-1">
@@ -66,10 +89,10 @@ export default function Home() {
                 <div className="flex flex-col gap-0 leading-[0.9] w-full items-center">
                   Month
                   <div className="flex text-[4rem] font-extrabold flex-col">{month}</div>
-                </div>
-                <button className="h-10 border-2 px-5 rounded-lg grid-rows-1 w-full">Cash Flow breakdown</button>
                   
-                  <div className="h-fit grid w-fit pl-5 pb-2 grid-rows-1 grid-cols-2 gap-5 grid-flow-col-dense justify-center items-center bg-slate-200">
+                </div>
+                {!(monthlyIncomeClaimed && monthlyCostsPaid) && <button className="grid row-span-1 h-12 justify-center items-center rounded-lg w-full border-2" onClick={()=>{handleBoth()}}>Collect income and pay</button>}
+                  <div className="h-fit grid w-fit grid-rows-1 grid-cols-2 gap-5 justify-center items-center grid-flow-col-dense border-2 bg-slate-200">
                     {
                       // monthly income
                       !(monthlyIncomeClaimed) && 
@@ -88,7 +111,7 @@ export default function Home() {
                       </div>
                     }
                     {
-                    (monthlyCostsPaid && monthlyIncomeClaimed) && <button onClick={()=>{updateMonth()}} className="h-10 border-2 px-5 rounded-lg row-span-2 w-full">Next Month</button>
+                    (monthlyCostsPaid && monthlyIncomeClaimed) && <button onClick={()=>{updateMonth()}} className="h-10 border-2 px-5 rounded-lg row-span-2 w-fit">Next Month</button>
                     }
                   </div>
               </div>
