@@ -92,7 +92,7 @@ export default function Home() {
                   
                 </div>
                 {!(monthlyIncomeClaimed && monthlyCostsPaid) && <button className="grid row-span-1 h-12 justify-center items-center rounded-lg w-full border-2" onClick={()=>{handleBoth()}}>Collect income and pay</button>}
-                  <div className="h-fit grid w-fit grid-rows-1 grid-cols-2 gap-5 justify-center items-center grid-flow-col-dense border-2 bg-slate-200">
+                  <div className="h-fit grid w-fit grid-rows-1 grid-cols-2 gap-5 justify-center items-center grid-flow-col-dense bg-slate-200">
                     {
                       // monthly income
                       !(monthlyIncomeClaimed) && 
@@ -111,7 +111,7 @@ export default function Home() {
                       </div>
                     }
                     {
-                    (monthlyCostsPaid && monthlyIncomeClaimed) && <button onClick={()=>{updateMonth()}} className="h-10 border-2 px-5 rounded-lg row-span-2 w-fit">Next Month</button>
+                    (monthlyCostsPaid && monthlyIncomeClaimed) && <button onClick={()=>{updateMonth()}} className="h-10 border-2 px-5 rounded-lg col-span-full w-fit">Next Month</button>
                     }
                   </div>
               </div>
