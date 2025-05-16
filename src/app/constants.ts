@@ -17,8 +17,8 @@ export type Deposit={
   reinvest: boolean;
 }
 
-export const FDINTERESTRATE:number = 0.0046; // roughly 5.5% P.A.
-export const RDINTERESTRATE:number = 0.0042; // roughly 5% P.A.
+export const FDINTERESTRATE:number = 0.01;
+export const RDINTERESTRATE:number = 0.03;
 
 
 export const companies:Array<Security> =  [
