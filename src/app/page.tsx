@@ -4,6 +4,7 @@ import { calculateFixedDepositInterestPayment, calculateMonthlyRepayment, update
 import FixedDeposit from "./deposits/FixedDeposit";
 import { Deposit, Property } from "./constants";
 import Banner from "./components/Banner";
+import RecurringDeposit from "./deposits/RecurringDeposit";
 
 
 export default function Home() {
@@ -14,9 +15,12 @@ export default function Home() {
   const [stocks, setStocks] =useState([]);
   const [commodities, setCommodities] = useState([]);
   const [liabilities, setLiabilities] = useState([]);
+  // fixed deposts
   const [fixedDeposits, setFixedDeposits] = useState<Array<Deposit>>([]);
+  const [showFDModal, setShowFDModal] = useState(false);
+  // recurring deposits
   const [recurringDeposits, setRecurringDeposits] = useState<Array<Deposit>>([]);
-  
+  const [showRDModal, setShowRDModal] = useState(false);
   useEffect(()=>{
     setBalance(JSON.parse(localStorage?.getItem("balance")||'0'))
     setMonth(JSON.parse(localStorage?.getItem("month") || "1"));
@@ -27,7 +31,7 @@ export default function Home() {
 
   const [monthlyCostsPaid, setMonthlyCostsPaid] = useState(false);
   const[monthlyIncomeClaimed, setMonthlyIncomeClaimed] = useState(false);
-  const [showFDModal, setShowFDModal] = useState(false);
+  
   const calculateCashFlow = ()=>{
     var propertyIncome:number = properties.reduce((acc,b)=>acc + b.income,0);
     var propertyExpenses:number = properties.reduce((totalRepayment, property) => totalRepayment + calculateMonthlyRepayment(property), 0); 
@@ -128,7 +132,7 @@ export default function Home() {
               </div>
               <div className="grid border-2 row-span-1 col-span-1 rounded-lg p-2">
                 <button onClick={()=>{setShowFDModal(true)}} className="grid border-2 w-full h-10 justify-center items-center rounded-lg">Fixed Deposit</button>
-                <button className="grid border-2 w-full h-10 justify-center items-center rounded-lg">Recurring Deposit</button>
+                <button onClick={()=>{setShowRDModal(true)}} className="grid border-2 w-full h-10 justify-center items-center rounded-lg">Recurring Deposit</button>
               </div>
             </div>
         </div>
@@ -141,6 +145,8 @@ export default function Home() {
             setShowFDModal={setShowFDModal}
           />
           }
+          {showRDModal &&
+          <RecurringDeposit balance={balance} setBalance={setBalance} setShowRDModal={setShowRDModal} recurringDeposits={recurringDeposits} setRecurringDeposits={setRecurringDeposits}/>}
     </div>
   );
 }
