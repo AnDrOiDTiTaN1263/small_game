@@ -92,7 +92,7 @@ export default function Home() {
                   
                 </div>
                 {!(monthlyIncomeClaimed && monthlyCostsPaid) && <button className="grid row-span-1 h-12 justify-center items-center rounded-lg w-full border-2" onClick={()=>{handleBoth()}}>Collect income and pay</button>}
-                  <div className="h-fit grid w-fit grid-rows-1 grid-cols-2 gap-5 justify-center items-center grid-flow-col-dense bg-slate-200">
+                  <div className="h-fit grid w-fit grid-rows-1 grid-cols-2 gap-5 justify-center items-center grid-flow-col-dense ">
                     {
                       // monthly income
                       !(monthlyIncomeClaimed) && 
@@ -132,7 +132,15 @@ export default function Home() {
               </div>
             </div>
         </div>
-        {showFDModal && <FixedDeposit balance={balance} setBalance={setBalance} fixedDeposits={fixedDeposits} setFixedDeposits={setFixedDeposits} setShowFDModal={setShowFDModal}/>}
+        {showFDModal && 
+          <FixedDeposit 
+            balance={balance} 
+            setBalance={setBalance} 
+            fixedDeposits={fixedDeposits} 
+            setFixedDeposits={setFixedDeposits} 
+            setShowFDModal={setShowFDModal}
+          />
+          }
     </div>
   );
 }
