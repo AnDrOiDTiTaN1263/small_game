@@ -56,7 +56,13 @@ export function updateRecurringDeposits(deposits: Array<Deposit>, curMonth:numbe
   return updatedDeposits;
 }
 
-
-// export function updateLiabilities(liabilities){
-
-// }
+export function calculateTax(fds:Array<Deposit>, rds:Array<Deposit>, realEstates:Array<Property>){
+  const fdInterestTax = fds.reduce((accum:number, d:Deposit)=>accum+d.depositAmount*FDINTERESTRATE,0)
+  const rdInterestTax = rds.reduce((accum:number, d:Deposit)=>accum + d.depositAmount*RDINTERESTRATE,0)
+  const realEstateTax = realEstates.reduce((accum: number, r: Property) => {
+    const loanAmount = r.fullPrice - r.paidAmount;
+    const annualInterest = loanAmount * (r.interestRate / 100);
+    return accum + r.income * 12 - annualInterest;
+  }, 0);
+  return {fdInterestTax, rdInterestTax, realEstateTax}
+}
