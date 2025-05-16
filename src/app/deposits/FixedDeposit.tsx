@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import DepositComponent from './DepositComponent'
+import React, { useEffect, useState } from 'react'
+import DepositComponent from './FD'
 
 import {FDINTERESTRATE, Deposit} from "@/app/constants";
 
@@ -14,6 +14,20 @@ type FDProps = {
 export default function FixedDeposit({fixedDeposits, balance, setBalance, setFixedDeposits,setShowFDModal}:FDProps) {
     const [deposit, setDeposit] = useState<Deposit>({depositAmount:0, type:false, recurringDeposit:0, startMonth:-1, maturityMonth:-1, reinvest:false});
 
+    
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+            setShowFDModal(false);
+        }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, []);
+
+
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name === "depositAmount"){
             e.target.value = e.target.value.indexOf(".") >= 0 ? e.target.value.slice(0, e.target.value.indexOf(".") + 3) : e.target.value;
@@ -23,8 +37,12 @@ export default function FixedDeposit({fixedDeposits, balance, setBalance, setFix
             setDeposit({...deposit, [e.target.name]: e.target.checked})
         }
     }
+    const reset = ()=>{
+        setDeposit({...deposit, ['depositAmount']: 0.0, ['reinvest']:false});
+    }
+
     const handleAdd = ()=>{
-        if(balance >= deposit.depositAmount){
+        if( deposit.depositAmount >0 && balance >= deposit.depositAmount){
             setFixedDeposits([...fixedDeposits, deposit]);
             setBalance(balance-deposit.depositAmount)
             localStorage.setItem("fds", JSON.stringify([...fixedDeposits, deposit]))
@@ -37,15 +55,8 @@ export default function FixedDeposit({fixedDeposits, balance, setBalance, setFix
         <div className='grid w-[90%] h-[90%]  z-20 rounded-xl grid-flow-col-dense gap-2 grid-cols-11'>
             <div className='grid col-span-5 grid-rows-11 rounded-t-xl grid-flow-row-dense overflow-hidden  gap-2'>
                 <div className='grid row-span-1 bg-zinc-200 justify-center items-center text-2xl font-semibold rounded-xl'>Your Deposits</div>
-                <div className="grid row-span-10 bg-zinc-200 w-full h-full overflow-y-scroll rounded-xl">
-                    {fixedDeposits.length ===0 ? 
-                        <div className='grid w-full h-full justify-center items-center text-xl'>No Deposits to show</div>
-                    :
-                        <div className='grid grid-flow-row-dense gap-2 w-full h-full p-2'>
-                            {fixedDeposits.map((x,i)=><DepositComponent key={i} id={i} deposit={x} setFixedDeposits={setFixedDeposits} setBalance={setBalance} />)}
-                        </div>
-                    }
-                    
+                <div className='grid row-span-10 bg-zinc-200 rounded-xl overflow-y-scroll gap-2 p-2'>
+                    {fixedDeposits.map((x,i)=><DepositComponent key={i} deposit={x} id={i} setBalance={setBalance} setFixedDeposits={setFixedDeposits} />)}
                 </div>
             </div>
             <div className='grid col-span-5 bg-zinc-200 rounded-b-xl p-2 rounded-lg'>
@@ -55,12 +66,16 @@ export default function FixedDeposit({fixedDeposits, balance, setBalance, setFix
                     <div>You currently have: ${balance.toFixed(2)} you can use to deposit</div>
                     <div className='flex w-full gap-2'>
                         <label className='text-nowrap w-fit px-2'>Deposit Amount:</label>
-                        <input onChange={handleChange} type='number' name='depositAmount'  className='grid row-span-1 h-8 w-full border-2 outline-none rounded-lg px-2' />
+                        <input onChange={handleChange} value={deposit.depositAmount.toString()} type='number' name='depositAmount'  className='grid row-span-1 h-8 w-full border-2 outline-none rounded-lg px-2' />
+                    </div>
+                    <div className='flex w-full justify-center gap-10'>
+                        <button onClick={reset} className='flex border-2 w-fit h-10 px-5 justify-center items-center rounded-lg hover:bg-black hover:text-white'>Reset</button>
+                        <button onClick={()=>{setDeposit({...deposit, ['depositAmount']: balance})}} className='flex border-2 w-fit h-10 px-5 justify-center items-center rounded-lg hover:bg-black hover:text-white'>all in</button>
                     </div>
 
                     <div className='flex w-full gap-2 items-center'>
                         <label className='text-nowrap w-fit px-2'>Reinvest the interest?</label>
-                        <input onChange={handleChange} type="checkbox" name='reinvest' className='grid row-span-1 h-4 w-4 border-2 outline-none rounded-lg px-2' />
+                        <input onChange={handleChange} type="checkbox" checked={deposit.reinvest} name='reinvest' className='grid row-span-1 h-4 w-4 border-2 outline-none rounded-lg px-2' />
                     </div>
                     <div className='flex flex-col justify-start p-2 border-2 row-span-1'>
                         <div className='flex justify-center items-center text-xl'>Summary</div>
